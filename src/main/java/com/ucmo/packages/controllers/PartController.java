@@ -56,18 +56,23 @@ public class PartController {
 		return new ResponseEntity<List<ModelPartDto>>(joinQueryService.getModelParts(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<List<ModelPartDto>> getModelPartsJoinByModelId(@PathVariable int id) {
+		return new ResponseEntity<List<ModelPartDto>>(joinQueryService.getModelPartsByModelId(id), HttpStatus.OK);
+	}
+	
 	@GetMapping(path="/models/all")
 	public @ResponseBody Iterable<Model> getAllModels() {
 		System.out.println("[Getting all models...]");
 		return modelRepo.findAll();
 	}
 	
-	@GetMapping("/{id}")
+	/*@GetMapping("/{id}")
 	@ResponseBody
 	public Part getPartById(@PathVariable int id) {
 		Optional<Part> matchPart = partRepo.findById(id);
 		return matchPart.isPresent() ? matchPart.get() : null;
-	}
+	}*/
 	
     @GetMapping("/part/{partName}")
     @RequestMapping

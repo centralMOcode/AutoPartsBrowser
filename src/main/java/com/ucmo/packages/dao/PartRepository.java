@@ -18,5 +18,9 @@ public interface PartRepository extends CrudRepository<Part, Integer> {
 			+ "FROM Part p JOIN p.model m")
 	List<ModelPartDto> fetchModelPartDataJoin();
 	
+	@Query("SELECT new com.ucmo.packages.dto.ModelPartDto(m.id, m.name, m.year, p.id, p.name, p.manufacturer, p.price)"
+			+ "FROM Part p JOIN p.model m WHERE m.id = ?1")
+	List<ModelPartDto> fetchModelPartDataByModelId(Integer id);
+	
 	List<Part> findByNameContaining(String name);
 }

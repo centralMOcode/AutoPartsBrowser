@@ -22,4 +22,10 @@ public class JoinQueryService {
 		list.forEach(l -> System.out.println(l));
 		return list;
 	}
+	
+	public List<ModelPartDto> getModelPartsByModelId(Integer id) {
+		List<ModelPartDto> list = partRepo.fetchModelPartDataByModelId(id);
+		list.forEach(l -> System.out.println(l));
+		return list;
+	}
 }
