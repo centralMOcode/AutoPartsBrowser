@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col-xs-12">
+        <app-sidebar-item
+            *ngFor="let modelElement of models; let i = index"
+            [model]="modelElement"
+            [index]=modelElement.modelId></app-sidebar-item>
+    </div>
+</div>

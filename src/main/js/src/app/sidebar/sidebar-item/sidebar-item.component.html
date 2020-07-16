@@ -1,0 +1,10 @@
+<a 
+style="cursor: pointer;"
+[routerLink]=[model.id]
+routerLinkActive="active"
+class="list-group-item clearfix"
+>
+<div class="pull-left">
+    <p (click)="log()">{{ model.modelName }}</p>
+    <!-- <p>{{ model.modelId }}</p> -->
+</div>

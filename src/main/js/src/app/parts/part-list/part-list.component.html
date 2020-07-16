@@ -1,7 +1,7 @@
 <h2>Parts List</h2>
 
 <div class="row">
-    <div class="col-xs-10">
+    <div class="col-md-10">
         <hr>
         <div class="list-group">
             <a
@@ -9,7 +9,7 @@
                 style="cursor:pointer;"
                 *ngFor="let part of parts"
             >
-            {{ part.carMake }} {{ part.partName }} by {{part.partManufacturer}} (${{ part.price }})
+            {{ part.carModel }} {{ part.partName }} by {{part.partManufacturer}} (${{ part.price }})
             </a>
         </div>
     </div>

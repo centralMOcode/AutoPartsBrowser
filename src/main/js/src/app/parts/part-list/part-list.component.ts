@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PartService } from '../services/part/part.service';
+import { PartService } from '../../services/part/part.service';
+import { Part } from 'src/app/models/part.model';
 
 @Component({
   selector: 'app-part-list',
@@ -9,7 +10,7 @@ import { PartService } from '../services/part/part.service';
 })
 export class PartListComponent implements OnInit {
 
-  parts: Array<any>;
+  parts: Array<Part>;
 
   constructor(private partService: PartService) { }
 

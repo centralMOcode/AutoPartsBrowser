@@ -14,4 +14,8 @@ export class PartService {
   getAll(): Observable<any> {
     return this.http.get('//localhost:8080/parts/all');
   }
+
+  getAllModels(): Observable<any> {
+    return this.http.get('//localhost:8080/parts/models/all');
+  }
 }
