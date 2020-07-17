@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Part } from '../../models/part.model';
@@ -24,5 +24,13 @@ export class PartService {
 
   getPartsByModelId(index: number): Observable<Part[]> {
     return this.http.get<Part[]>(`//localhost:8080/parts/${index}`);
+  }
+
+  deletePart(index: string) {
+    console.log("delete");
+    const url = `http://localhost:8080/parts/delete/${index}`;
+    return this.http.delete(url).subscribe(data => {
+      console.log(data);
+    });
   }
 }

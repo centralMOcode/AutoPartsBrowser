@@ -20,7 +20,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="part-option-hover" style="cursor: pointer;">Add to cart</a></li>
                             <li><a class="part-option-hover" style="cursor: pointer;">Edit Part</a></li>
-                            <li><a class="part-option-hover" style="cursor: pointer;">Delete Part</a></li>
+                            <li><a class="part-option-hover" style="cursor: pointer;" (click)="deletePart(partElement.partId); refresh()">Delete Part</a></li>
                         </ul>
                     </div>
                 </div>

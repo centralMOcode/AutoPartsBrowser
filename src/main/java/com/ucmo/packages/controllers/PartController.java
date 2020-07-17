@@ -80,9 +80,10 @@ public class PartController {
         return partRepo.findByNameContaining(name);
     }
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	@ResponseBody
-	public void delete(@PathVariable int id) {
+	public void delete(@PathVariable int  id) {
+		System.out.println("Called delete");
 		partRepo.deleteById(id);
 	}
 }
