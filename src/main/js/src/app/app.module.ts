@@ -13,6 +13,8 @@ import { SidebarListComponent } from './sidebar/sidebar-list/sidebar-list.compon
 import { SidebarItemComponent } from './sidebar/sidebar-item/sidebar-item.component';
 import { PartStartComponent } from './parts/part-start/part-start.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { CartListComponent } from './cart-list/cart-list.component';
+import { CartItemComponent } from './cart-list/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { DropdownDirective } from './shared/dropdown.directive';
     SidebarListComponent,
     SidebarItemComponent,
     PartStartComponent,
-    DropdownDirective
+    DropdownDirective,
+    CartListComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

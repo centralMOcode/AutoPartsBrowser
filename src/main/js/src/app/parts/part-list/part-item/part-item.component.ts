@@ -30,8 +30,12 @@ export class PartItemComponent implements OnInit {
     );
   }
 
-  log() {
-    //console.log(this.parts[partName]);
+  deletePart(part) {
+    console.log(part);
+    return this.partService.deletePart(part.toString());
   }
 
+  refresh() {
+    window.location.reload();
+  }
 }
