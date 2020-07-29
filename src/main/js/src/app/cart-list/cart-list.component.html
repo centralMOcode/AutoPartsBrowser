@@ -1,1 +1,38 @@
-<p>cart-list works!</p>
+<div class="row">
+    <div class="col-xs-10">
+        <h1>Cart</h1>
+        <hr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Model</th>
+                    <th scope="col">Part Name</th>
+                    <th scope="col">Manufacturer</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cartElement of cart; let i = index">
+                    <td>{{ cartElement.modelName }}</td>
+                    <td>{{ cartElement.partName }}</td>
+                    <td>{{ cartElement.partManufacturer }}</td>
+                    <td>${{ cartElement.partPrice }}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="onRemoveFromCart(cartElement.id); refresh()">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <div class="list-group">
+            <a
+            class="list-group-item"
+            style="cursor:pointer;"
+            *ngFor="let part of parts">
+            {{ part.partName }} ${{ part.partPrice }} - {{ part.modelName }}
+            <button class="btn btn-danger">Remove</button>
+            </a>
+        </div> -->
+    </div>
+    <!-- <h3>Total: {{ total }}</h3> -->
+</div>

@@ -1,31 +1,45 @@
-<div class="row">
-    <div class="col-xs-12">
-        <ul class="list-group">
-            <li
-            class="list-group-item"
-            *ngFor="let partElement of parts">
-            <h4>{{partElement.partName}}</h4>
-            <p><em>"{{partElement.partManufacturer}}"</em></p> 
-            <p>${{partElement.partPrice}}</p>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div 
-                    class="btn-group"
-                    appDropdown>
-                        <button 
-                            type="button"
-                            class="btn btn-primary dropdown-toggle">
-                            Part Options <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="part-option-hover" style="cursor: pointer;">Add to cart</a></li>
-                            <li><a class="part-option-hover" style="cursor: pointer;">Edit Part</a></li>
-                            <li><a class="part-option-hover" style="cursor: pointer;" (click)="deletePart(partElement.partId); refresh()">Delete Part</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </li>
-        </ul>
+<button class="btn btn-success" routerLink="/create">Create Part</button>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Part Name</th>
+                        <th scope="col">Manufacturer</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let partElement of parts | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                        <td>{{ partElement.partName }}</td>
+                        <td>{{ partElement.partManufacturer }}</td>
+                        <td>{{ partElement.partPrice }}</td>
+                        <td>
+                            <div 
+                            class="btn-group"
+                            appDropdown>
+                                <button 
+                                    type="button"
+                                    class="btn btn-primary dropdown-toggle">
+                                    Part Options <span class="caret"></span>
+                                </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="part-option-hover" style="cursor: pointer;" (click)="onAddToCart(partElement); refresh()">Add to cart</a></li>
+                                <li><a class="part-option-hover" style="cursor: pointer;">Edit Part</a></li>
+                                <li><a class="part-option-hover" style="cursor: pointer;" (click)="deletePart(partElement.partId); refresh()">Delete Part</a></li>
+                            </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ngb-pagination
+            [(page)]="page"
+            [pageSize]="pageSize"
+            [collectionSize]="parts.length"
+        ></ngb-pagination>
+        </div>
     </div>
 </div>

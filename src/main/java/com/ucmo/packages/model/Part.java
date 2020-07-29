@@ -37,7 +37,7 @@ public class Part implements Serializable{
 	@Column(name = "price")
 	private Double price;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinTable(name = "model_part",
 		joinColumns = {
 				@JoinColumn(name = "part_id", referencedColumnName = "id",

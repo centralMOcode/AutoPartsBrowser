@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PartListComponent } from './part-list.component';
+import { PartCreateComponent } from './part-create.component';
 
-describe('PartListComponent', () => {
-  let component: PartListComponent;
-  let fixture: ComponentFixture<PartListComponent>;
+describe('PartCreateComponent', () => {
+  let component: PartCreateComponent;
+  let fixture: ComponentFixture<PartCreateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PartListComponent ]
+      declarations: [ PartCreateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PartListComponent);
+    fixture = TestBed.createComponent(PartCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

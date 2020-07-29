@@ -1,0 +1,5 @@
+.mat-badge-medium.mat-badge-above .mat-badge-content {
+    top: unset;
+    right: unset;
+    top: -15px;
+}

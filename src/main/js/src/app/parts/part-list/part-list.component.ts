@@ -11,6 +11,8 @@ import { Part } from 'src/app/models/part.model';
 export class PartListComponent implements OnInit {
 
   parts: Array<Part>;
+  page = 1;
+  pageSize = 5;
 
   constructor(private partService: PartService) { }
 
@@ -19,5 +21,4 @@ export class PartListComponent implements OnInit {
       this.parts = data;
     });
   }
-
 }

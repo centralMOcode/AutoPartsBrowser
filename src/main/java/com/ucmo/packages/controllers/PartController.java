@@ -40,17 +40,10 @@ public class PartController {
 	
 	@PostMapping(path="/add", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Part addPart(@RequestBody Part part) {
-		Part newPart = new Part(part.getPartName(), part.getPartManufacturer(), part.getPrice());
-		return partRepo.save(newPart);
+	public void addPart(@RequestBody Part part) {
+		partRepo.savePart(part.getPartName(), part.getPartManufacturer(), part.getPrice());
 	}
-	
-	/*@GetMapping(path="/all")
-	public @ResponseBody Iterable<Part> getAllParts() {
-		System.out.println("[Getting all parts...]");
-		return partRepo.findAll();
-	}*/
-	
+
 	@GetMapping(path="/all")
 	public ResponseEntity<List<ModelPartDto>> getModelPartsJoin() {
 		return new ResponseEntity<List<ModelPartDto>>(joinQueryService.getModelParts(), HttpStatus.OK);
@@ -66,13 +59,6 @@ public class PartController {
 		System.out.println("[Getting all models...]");
 		return modelRepo.findAll();
 	}
-	
-	/*@GetMapping("/{id}")
-	@ResponseBody
-	public Part getPartById(@PathVariable int id) {
-		Optional<Part> matchPart = partRepo.findById(id);
-		return matchPart.isPresent() ? matchPart.get() : null;
-	}*/
 	
     @GetMapping("/part/{partName}")
     @RequestMapping

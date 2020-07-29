@@ -3,9 +3,12 @@ package com.ucmo.packages.dao;
 import com.ucmo.packages.model.Part;
 import com.ucmo.packages.dto.ModelPartDto;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
@@ -22,5 +25,13 @@ public interface PartRepository extends CrudRepository<Part, Integer> {
 			+ "FROM Part p JOIN p.model m WHERE m.id = ?1")
 	List<ModelPartDto> fetchModelPartDataByModelId(Integer id);
 	
-	List<Part> findByNameContaining(String name);
+	@Transactional
+	@Modifying
+	@Query(value = "INSERT INTO part(name, manufacturer, price) VALUES(:name, :manufacturer, :price)", nativeQuery = true)
+	void savePart(@Param("name") String name, @Param("manufacturer") String manufacturer, @Param("price") Double price);
+	
+	/*@Query("SELECT id FROM part WHERE 1 ORDER BY id DESC LIMIT 1 ")
+	Part fetchLastSaved();*/
+	
+	List<Part> findByNameContaining(String name); //Should be able to structure a query so I can use this repo function to incorporate a search function
 }

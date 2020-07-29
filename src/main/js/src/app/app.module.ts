@@ -15,6 +15,11 @@ import { PartStartComponent } from './parts/part-start/part-start.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { CartListComponent } from './cart-list/cart-list.component';
 import { CartItemComponent } from './cart-list/cart-item/cart-item.component';
+import { PartCreateComponent } from './parts/part-create/part-create.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -29,12 +34,17 @@ import { CartItemComponent } from './cart-list/cart-item/cart-item.component';
     PartStartComponent,
     DropdownDirective,
     CartListComponent,
-    CartItemComponent
+    CartItemComponent,
+    PartCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    MatBadgeModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

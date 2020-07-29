@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ShoppingCartService } from '../services/shopping-cart.service';
+import { Cart } from "../models/cart.model";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart-list',
@@ -6,10 +9,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-list.component.css']
 })
 export class CartListComponent implements OnInit {
+  cart: Cart[] = [];
+  total: number = 0;
+  private changeSubscription: Subscription;
 
-  constructor() { }
+  constructor(private cartService: ShoppingCartService) { }
 
   ngOnInit(): void {
+    this.cartService.getAll().subscribe(data => {
+      this.cart = data;
+    });
+  }
+
+  onRemoveFromCart(index) {
+    console.log(index);
+    this.cartService.deleteCartPart(index);
+  }
+
+  refresh() {
+    window.location.reload();
   }
 
 }

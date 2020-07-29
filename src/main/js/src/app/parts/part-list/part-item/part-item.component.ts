@@ -3,6 +3,7 @@ import { PartService } from 'src/app/services/part/part.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import {Part} from '../../../models/part.model';
+import { ShoppingCartService } from '../../../services/shopping-cart.service';
 import { NullTemplateVisitor } from '@angular/compiler';
 
 @Component({
@@ -11,12 +12,15 @@ import { NullTemplateVisitor } from '@angular/compiler';
   styleUrls: ['./part-item.component.css']
 })
 export class PartItemComponent implements OnInit {
-  parts: Part[];
+  parts: Part[] = [];
   id: number;
+  page = 1;
+  pageSize = 5;
 
   constructor(private partService: PartService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private cartService: ShoppingCartService) { }
 
   ngOnInit(): void {
     this.route.params
@@ -37,5 +41,10 @@ export class PartItemComponent implements OnInit {
 
   refresh() {
     window.location.reload();
+  }
+
+  onAddToCart(part) {
+    console.log(part)
+    this.cartService.addCartPart(part)
   }
 }
