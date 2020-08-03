@@ -27,9 +27,17 @@ export class PartService {
   }
 
   deletePart(index: string) {
-    console.log("delete");
     const url = `http://localhost:8080/parts/delete/${index}`;
     return this.http.delete(url).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  updatePart(index: string, formData: Object) {
+    console.log(index);
+    console.log(typeof(formData));
+    const url = `http://localhost:5000/api/parts/${index}`;
+    return this.http.put(url, formData).subscribe(data => {
       console.log(data);
     });
   }

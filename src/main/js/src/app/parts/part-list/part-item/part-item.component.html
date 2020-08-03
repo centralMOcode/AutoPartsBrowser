@@ -1,4 +1,3 @@
-<button class="btn btn-success" routerLink="/create">Create Part</button>
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -27,7 +26,7 @@
                                 </button>
                             <ul class="dropdown-menu">
                                 <li><a class="part-option-hover" style="cursor: pointer;" (click)="onAddToCart(partElement); refresh()">Add to cart</a></li>
-                                <li><a class="part-option-hover" style="cursor: pointer;">Edit Part</a></li>
+                                <li><a class="part-option-hover" style="cursor: pointer;" (click)="onShowEdit(partElement.partId)">Edit Price</a></li>
                                 <li><a class="part-option-hover" style="cursor: pointer;" (click)="deletePart(partElement.partId); refresh()">Delete Part</a></li>
                             </ul>
                             </div>
@@ -35,6 +34,25 @@
                     </tr>
                 </tbody>
             </table>
+            <form (ngSubmit)="onSubmit(f); refresh()" #f="ngForm">
+                <div style="width: 50%;" class="form-group" *ngIf="showEdit">
+                    <label for="price">Price</label>
+                    <input
+                        type="number"
+                        id="price"
+                        class="form-control"
+                        style="width: 50%; margin: 2px;"
+                        min="1"
+                        step="any"
+                        ngModel
+                        name="price"
+                        placeholder="Part Price"
+                        autofocus
+                        required>
+                    <input class="btn btn-success" type="submit" value="Change">
+                    <a style="cursor: pointer; margin-left: 15px;" (click)="onResetEditStatus()"><img width="25" height="25" src="https://img.icons8.com/ios/50/000000/xbox-x.png"/></a>
+                </div>
+            </form>
             <ngb-pagination
             [(page)]="page"
             [pageSize]="pageSize"

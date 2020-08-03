@@ -27,8 +27,13 @@ public interface PartRepository extends CrudRepository<Part, Integer> {
 	
 	@Transactional
 	@Modifying
-	@Query(value = "INSERT INTO part(name, manufacturer, price) VALUES(:name, :manufacturer, :price)", nativeQuery = true)
+	@Query(value = "INSERT INTO Part(name, manufacturer, price) VALUES(:name, :manufacturer, :price)", nativeQuery = true)
 	void savePart(@Param("name") String name, @Param("manufacturer") String manufacturer, @Param("price") Double price);
+	
+	@Transactional
+	@Modifying
+	@Query(value = "UPDATE Part SET price = :price WHERE id = :id")
+	void updatePart(@Param("price") Double price, @Param("id") Integer id);
 	
 	/*@Query("SELECT id FROM part WHERE 1 ORDER BY id DESC LIMIT 1 ")
 	Part fetchLastSaved();*/

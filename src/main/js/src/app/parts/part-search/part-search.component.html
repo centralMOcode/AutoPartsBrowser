@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <h1><strong>Search for a Part</strong></h1>
+            <hr>
+            <form (ngSubmit)="onSubmit()" #f="ngForm">
+                <div id="search-data">
+                    <label for="part-search">Search</label>
+                    <input
+                        id="part-search"
+                        class="form-control"
+                        ngModel
+                        name="part-search"
+                        placeholder="Search..."
+                        required
+                        autofocus>
+                </div>
+                <button 
+                class="btn btn-success"
+                style="margin-top: 5px;"
+                type="submit"
+                [disabled]="!f.valid">Submit</button>
+            </form>
+            <div *ngIf="search.length > 0">
+                <h1>Results</h1>
+                <hr>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col">Part Name</th>
+                            <th scope="col">Manufacturer</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let searchElement of search | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                            <td>{{ searchElement.modelName }}</td>
+                            <td>{{ searchElement.partName }}</td>
+                            <td>{{ searchElement.partManufacturer }}</td>
+                            <td>{{ searchElement.partPrice }}</td>
+                            <td>
+                                <div 
+                                class="btn-group"
+                                appDropdown>
+                                    <button 
+                                        type="button"
+                                        class="btn btn-primary dropdown-toggle">
+                                        Part Options <span class="caret"></span>
+                                    </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="part-option-hover" style="cursor: pointer;">Add to cart</a></li>
+                                </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ngb-pagination
+                [(page)]="page"
+                [pageSize]="pageSize"
+                [collectionSize]="search.length"
+            ></ngb-pagination>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,6 +20,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSliderModule } from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
+import { PartSearchComponent } from './parts/part-search/part-search.component';
+import { FooterComponent } from './footer/footer.component';
+import { PartEditComponent } from './parts/part-edit/part-edit.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,10 @@ import { MatSliderModule } from '@angular/material/slider';
     DropdownDirective,
     CartListComponent,
     CartItemComponent,
-    PartCreateComponent
+    PartCreateComponent,
+    PartSearchComponent,
+    FooterComponent,
+    PartEditComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,8 @@ import { MatSliderModule } from '@angular/material/slider';
     NgbModule,
     BrowserAnimationsModule,
     MatBadgeModule,
-    MatSliderModule
+    MatSliderModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
