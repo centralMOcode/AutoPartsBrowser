@@ -14,7 +14,7 @@
                     <tr *ngFor="let partElement of parts | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
                         <td>{{ partElement.partName }}</td>
                         <td>{{ partElement.partManufacturer }}</td>
-                        <td>{{ partElement.partPrice }}</td>
+                        <td>${{ partElement.partPrice }}</td>
                         <td>
                             <div 
                             class="btn-group"

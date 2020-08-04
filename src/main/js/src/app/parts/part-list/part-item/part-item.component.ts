@@ -3,7 +3,7 @@ import { PartService } from 'src/app/services/part/part.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import {Part} from '../../../models/part.model';
-import { PartRequest } from '../../../models/partRequest.model';
+import { PartUpdateRequest } from '../../../models/partUpdateRequest.model';
 import { ShoppingCartService } from '../../../services/shopping-cart.service';
 import { NullTemplateVisitor } from '@angular/compiler';
 import { NgForm } from '@angular/forms';
@@ -16,7 +16,7 @@ import { NgForm } from '@angular/forms';
 export class PartItemComponent implements OnInit {
   @ViewChild('f') searchForm: NgForm;
   parts: Part[] = [];
-  request: PartRequest = {
+  request: PartUpdateRequest = {
     price: null
   };
   id: number;

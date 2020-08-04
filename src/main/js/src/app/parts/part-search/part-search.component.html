@@ -21,6 +21,9 @@
                 type="submit"
                 [disabled]="!f.valid">Submit</button>
             </form>
+            <div *ngIf="search.length == 0">
+                <h1>No results...</h1>
+            </div>
             <div *ngIf="search.length > 0">
                 <h1>Results</h1>
                 <hr>
@@ -39,7 +42,7 @@
                             <td>{{ searchElement.modelName }}</td>
                             <td>{{ searchElement.partName }}</td>
                             <td>{{ searchElement.partManufacturer }}</td>
-                            <td>{{ searchElement.partPrice }}</td>
+                            <td>${{ searchElement.partPrice }}</td>
                             <td>
                                 <div 
                                 class="btn-group"
@@ -50,7 +53,7 @@
                                         Part Options <span class="caret"></span>
                                     </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="part-option-hover" style="cursor: pointer;">Add to cart</a></li>
+                                    <li><a class="part-option-hover" style="cursor: pointer;" (click)="onAddToCart(searchElement); refresh()">Add to cart</a></li>
                                 </ul>
                                 </div>
                             </td>

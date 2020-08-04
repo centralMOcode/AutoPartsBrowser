@@ -8,7 +8,6 @@ import { Part } from '../../models/part.model';
   providedIn: 'root'
 })
 export class PartService {
-  //private parts: Part[];
 
   constructor(private http:HttpClient) {
 
@@ -34,10 +33,15 @@ export class PartService {
   }
 
   updatePart(index: string, formData: Object) {
-    console.log(index);
-    console.log(typeof(formData));
     const url = `http://localhost:5000/api/parts/${index}`;
     return this.http.put(url, formData).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  createPart(formData: Object) {
+    const url = `http://localhost:5000/api/parts/create`;
+    return this.http.post(url, formData).subscribe(data => {
       console.log(data);
     });
   }

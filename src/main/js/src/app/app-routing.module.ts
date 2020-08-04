@@ -8,7 +8,6 @@ import { PartItemComponent } from './parts/part-list/part-item/part-item.compone
 import { CartListComponent } from './cart-list/cart-list.component';
 import { PartCreateComponent } from './parts/part-create/part-create.component';
 import { PartSearchComponent } from './parts/part-search/part-search.component';
-import { PartEditComponent } from './parts/part-edit/part-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/models', pathMatch: 'full' },
@@ -18,8 +17,7 @@ const routes: Routes = [
   ] },
   { path: 'cart', component: CartListComponent },
   { path: 'create', component: PartCreateComponent },
-  { path: 'search', component: PartSearchComponent },
-  { path: "edit", component: PartEditComponent }
+  { path: 'search', component: PartSearchComponent }
 ];
 
 @NgModule({

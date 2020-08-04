@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { PartService } from '../../services/part/part.service';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { Part } from '../../models/part.model';
 
 @Component({
@@ -20,12 +21,22 @@ export class PartSearchComponent implements OnInit {
     searchString: ''
   }
 
-  constructor(private partService: PartService) { }
+  constructor(private partService: PartService,
+              private cartService: ShoppingCartService) { }
 
   ngOnInit(): void {
     this.partService.getAll().subscribe(data => {
       this.parts = data;
     });
+  }
+
+  onAddToCart(part) {
+    console.log(part)
+    this.cartService.addCartPart(part)
+  }
+
+  refresh() {
+    window.location.reload();
   }
 
   onSubmit() {

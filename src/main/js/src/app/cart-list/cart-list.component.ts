@@ -18,6 +18,9 @@ export class CartListComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.getAll().subscribe(data => {
       this.cart = data;
+      for (var i = 0; i < this.cart.length; i++){
+        this.total += this.cart[i].partPrice;
+      }
     });
   }
 

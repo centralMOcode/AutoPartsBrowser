@@ -14,7 +14,6 @@ import { SidebarItemComponent } from './sidebar/sidebar-item/sidebar-item.compon
 import { PartStartComponent } from './parts/part-start/part-start.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { CartListComponent } from './cart-list/cart-list.component';
-import { CartItemComponent } from './cart-list/cart-item/cart-item.component';
 import { PartCreateComponent } from './parts/part-create/part-create.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,8 +21,6 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 import { PartSearchComponent } from './parts/part-search/part-search.component';
-import { FooterComponent } from './footer/footer.component';
-import { PartEditComponent } from './parts/part-edit/part-edit.component';
 
 @NgModule({
   declarations: [
@@ -38,11 +35,8 @@ import { PartEditComponent } from './parts/part-edit/part-edit.component';
     PartStartComponent,
     DropdownDirective,
     CartListComponent,
-    CartItemComponent,
     PartCreateComponent,
-    PartSearchComponent,
-    FooterComponent,
-    PartEditComponent
+    PartSearchComponent
   ],
   imports: [
     BrowserModule,
