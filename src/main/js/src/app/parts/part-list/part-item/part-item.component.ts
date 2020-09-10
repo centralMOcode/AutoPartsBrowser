@@ -84,6 +84,11 @@ export class PartItemComponent implements OnInit {
 
     this.searchSubStr = str.substring(indices[1] + 2, str.length - 1);
     this.request.price = +this.searchSubStr;
-    return this.partService.updatePart(this.indexToEdit.toString(), this.request);
+
+    if (this.request.price > 0) {
+      return this.partService.updatePart(this.indexToEdit.toString(), this.request);
+    } else {
+      window.alert("Please enter a value");
+    }
   }
 }

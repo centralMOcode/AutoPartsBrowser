@@ -40,7 +40,6 @@ export class PartSearchComponent implements OnInit {
   }
 
   onSubmit() {
-    //Reg ex and populate search array
     this.search = [];
     this.query.searchString = this.searchForm.value;
     var str = JSON.stringify(this.query.searchString);
